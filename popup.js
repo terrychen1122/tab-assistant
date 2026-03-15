@@ -92,11 +92,10 @@ function renderSearch() {
           ${tab.pinned ? '<span class="pill">Pinned</span>' : ""}
           ${tab.audible ? '<span class="pill">Audible</span>' : ""}
         </div>
-        ${tab.active ? "" : `
-          <div class="action-row">
-            <button class="primary-button" data-action="activate" data-tab-id="${tab.id}" type="button">Switch</button>
-          </div>
-        `}
+        <div class="action-row">
+          ${tab.active ? "" : `<button class="primary-button" data-action="activate" data-tab-id="${tab.id}" type="button">Switch</button>`}
+          <button class="danger-button" data-action="close" data-tab-id="${tab.id}" type="button">Close</button>
+        </div>
       </article>
     `)
     .join("");
@@ -231,8 +230,23 @@ searchInput.addEventListener("keydown", (event) => {
     event.preventDefault();
     const tab = state.tabs[state.selectedIndex];
     if (tab) {
-      persistSearch(state.query);
-      void sendMessage("ACTIVATE_TAB", { tabId: tab.id }).then(() => window.close());
+      if (tab.active) {
+        void sendMessage("CLOSE_TAB", { tabId: tab.id }).then(() => {
+          state.recommendations = state.recommendations.filter((item) => item.id !== tab.id);
+          state.tabs = state.tabs.filter((item) => item.id !== tab.id);
+          state.groupingSuggestions = state.groupingSuggestions
+            .map((group) => ({
+              ...group,
+              tabIds: group.tabIds.filter((id) => id !== tab.id),
+              tabs: group.tabs.filter((groupTab) => groupTab.id !== tab.id)
+            }))
+            .filter((group) => group.tabIds.length >= 2);
+          renderAll();
+        });
+      } else {
+        persistSearch(state.query);
+        void sendMessage("ACTIVATE_TAB", { tabId: tab.id }).then(() => window.close());
+      }
     }
   }
 });
@@ -245,13 +259,6 @@ document.addEventListener("click", async (event) => {
   const { action } = target.dataset;
   const tabId = Number(target.dataset.tabId);
 
-  if (action === "activate") {
-    persistSearch(state.query);
-    await sendMessage("ACTIVATE_TAB", { tabId });
-    window.close();
-    return;
-  }
-
   if (action === "close") {
     await sendMessage("CLOSE_TAB", { tabId });
     state.recommendations = state.recommendations.filter((item) => item.id !== tabId);
@@ -262,6 +269,13 @@ document.addEventListener("click", async (event) => {
       tabs: group.tabs.filter((tab) => tab.id !== tabId)
     })).filter((group) => group.tabIds.length >= 2);
     renderAll();
+    return;
+  }
+
+  if (action === "activate") {
+    persistSearch(state.query);
+    await sendMessage("ACTIVATE_TAB", { tabId });
+    window.close();
     return;
   }
 
