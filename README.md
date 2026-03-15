@@ -11,7 +11,7 @@ Manifest V3 Chrome extension for:
 1. Open `chrome://extensions`.
 2. Enable Developer mode.
 3. Click `Load unpacked`.
-4. Select `/Users/xuchen/Developer/TabAssistant`.
+4. Select this project folder.
 
 ## Run tests
 
