@@ -88,7 +88,7 @@ function renderSearch() {
           ${index === state.selectedIndex ? '<span class="pill">Selected</span>' : ""}
         </div>
         <div class="pill-row">
-          ${tab.active ? '<span class="pill">Active</span>' : ""}
+          ${tab.active && index !== state.selectedIndex ? '<span class="pill">Active</span>' : ""}
           ${tab.pinned ? '<span class="pill">Pinned</span>' : ""}
           ${tab.audible ? '<span class="pill">Audible</span>' : ""}
         </div>

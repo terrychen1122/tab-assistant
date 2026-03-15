@@ -1,8 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Tab Assistant",
-  "description": "Search tabs, find likely-to-close tabs, and suggest tab groups in the current window.",
+  "name": "Tab Atlas",
+  "description": "Map your current window with tab search, close recommendations, and grouping suggestions.",
   "version": "0.1.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "permissions": [
     "storage",
     "tabs",
@@ -13,7 +19,11 @@
     "type": "module"
   },
   "action": {
-    "default_title": "Tab Assistant",
-    "default_popup": "popup.html"
+    "default_title": "Tab Atlas",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
   }
 }

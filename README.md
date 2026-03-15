@@ -1,4 +1,4 @@
-# Tab Assistant
+# Tab Atlas
 
 Manifest V3 Chrome extension for:
 
