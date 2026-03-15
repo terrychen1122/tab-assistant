@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tab Assistant</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Current window</p>
+        <h1>Tab Assistant</h1>
+        <p class="subtitle">Search faster, clean up with confidence, and group related work.</p>
+      </header>
+
+      <section class="tab-shell">
+        <div class="feature-tabs" role="tablist" aria-label="Extension features">
+          <button class="feature-tab is-active" id="feature-search-tab" type="button" role="tab" aria-selected="true" aria-controls="feature-search" data-feature="search">Search</button>
+          <button class="feature-tab" id="feature-close-tab" type="button" role="tab" aria-selected="false" aria-controls="feature-close" data-feature="close">Close</button>
+          <button class="feature-tab" id="feature-groups-tab" type="button" role="tab" aria-selected="false" aria-controls="feature-groups" data-feature="groups">Groups</button>
+        </div>
+
+        <section class="panel feature-panel is-active" id="feature-search" role="tabpanel" aria-labelledby="feature-search-tab">
+          <label class="search-label" for="searchInput">Search tabs</label>
+          <input id="searchInput" class="search-input" type="search" placeholder="Search title, URL, domain, path..." autocomplete="off">
+          <div id="searchResults" class="list" aria-live="polite"></div>
+        </section>
+
+        <section class="panel feature-panel" id="feature-close" role="tabpanel" aria-labelledby="feature-close-tab" hidden>
+          <div class="section-heading">
+            <h2>Close recommendations</h2>
+            <button id="refreshButton" class="ghost-button" type="button">Refresh</button>
+          </div>
+          <div id="recommendations" class="list"></div>
+        </section>
+
+        <section class="panel feature-panel" id="feature-groups" role="tabpanel" aria-labelledby="feature-groups-tab" hidden>
+          <h2>Suggested groups</h2>
+          <div id="groups" class="list"></div>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,246 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f1e8;
+  --bg-accent: #efe3d2;
+  --surface: rgba(255, 251, 245, 0.9);
+  --surface-strong: #fffaf2;
+  --text: #1f1a14;
+  --muted: #625748;
+  --line: rgba(72, 49, 24, 0.12);
+  --primary: #134e4a;
+  --primary-soft: #d7efe8;
+  --danger-soft: #f5ded8;
+  --danger-text: #8a2d1a;
+  --shadow: 0 20px 48px rgba(68, 42, 21, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 420px;
+  margin: 0;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(19, 78, 74, 0.18), transparent 42%),
+    linear-gradient(180deg, var(--bg) 0%, #f4ecdf 100%);
+  color: var(--text);
+}
+
+.app {
+  padding: 18px;
+}
+
+.tab-shell {
+  margin-top: 12px;
+}
+
+.hero {
+  margin-bottom: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 250, 242, 0.98), rgba(239, 227, 210, 0.92));
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 15px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.panel {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+}
+
+.feature-panel {
+  display: none;
+}
+
+.feature-panel.is-active {
+  display: block;
+}
+
+.feature-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 251, 245, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.feature-tab {
+  border: 0;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.feature-tab:hover {
+  color: var(--text);
+  background: rgba(239, 227, 210, 0.7);
+}
+
+.feature-tab.is-active {
+  color: white;
+  background: linear-gradient(135deg, #134e4a, #1f766f);
+  transform: translateY(-1px);
+}
+
+.search-label,
+.meta,
+.empty {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.search-input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(19, 78, 74, 0.18);
+  border-radius: 14px;
+  outline: none;
+  font: inherit;
+  background: var(--surface-strong);
+}
+
+.search-input:focus {
+  border-color: rgba(19, 78, 74, 0.5);
+  box-shadow: 0 0 0 4px rgba(19, 78, 74, 0.1);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.ghost-button,
+.primary-button,
+.danger-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ghost-button {
+  color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.primary-button {
+  color: white;
+  background: var(--primary);
+}
+
+.danger-button {
+  color: var(--danger-text);
+  background: var(--danger-soft);
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.item {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.item-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.item-url {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.pill-row,
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pill {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--bg-accent);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.group-preview {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.empty {
+  padding: 6px 0;
+}

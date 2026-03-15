@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Assistant",
+  "description": "Search tabs, find likely-to-close tabs, and suggest tab groups in the current window.",
+  "version": "0.1.0",
+  "permissions": [
+    "storage",
+    "tabs",
+    "tabGroups"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Tab Assistant",
+    "default_popup": "popup.html"
+  }
+}
